@@ -1,0 +1,88 @@
+<!-- Contact Us Form -->
+<form method="POST" #contactusForm="ngForm" (ngSubmit)="onSubmit(contactusForm)">
+
+  <h1>Contact Us</h1>
+  <br>
+
+  <div>
+    <!-- Username -->
+    <div>
+      <label
+        for="name"
+        class="control-lable"
+      >
+        Name:
+      </label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="contact.name"
+        required
+        autofocus
+        maxlength="20"
+        #name="ngModel"
+      />
+      <div *ngIf="name.errors?.required">
+        <p class="text-danger"><strong>Warning:</strong> "Name" is required.</p>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Email -->
+    <div>
+      <label
+        for="email"
+        class="control-lable"
+      >
+        Email:
+      </label>
+      <input
+        type="text"
+        name="email"
+        [(ngModel)]="contact.email"
+        required
+        autofocus
+        maxlength="20"
+        #name="ngModel"
+      />
+      <!--
+      <div *ngIf="email.errors?.required">
+        <p class="text-danger"><strong>Warning:</strong> "Email" is required.</p>
+      </div>
+      -->
+    </div>
+    <br>
+    <br>
+
+    <!-- Message -->
+    <div>
+      <label
+        for="message"
+        class="control-lable"
+      >
+        Message:
+      </label>
+      <input
+        type="text"
+        name="message"
+        [(ngModel)]="contact.message"
+        required
+        autofocus
+        maxlength="20"
+        #name="ngModel"
+      />
+      <!--
+      <div *ngIf="email.errors?.required">
+        <p class="text-danger"><strong>Warning:</strong> "Email" is required.</p>
+      </div>
+      -->
+    </div>
+    <br>
+    <br>
+
+    <!-- Submit -->
+    <input type="submit" name="submit" value="Submit"/>
+  </div>
+
+</form>

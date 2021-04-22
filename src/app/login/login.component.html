@@ -1,0 +1,72 @@
+<p>Current Login Information: {{ login | json }}</p>
+<p>Correct Login Information: "username": "bob", "password": "myPassword"</p>
+<p>Current Form Information: {{ loginForm.value | json }}</p>
+
+<!-- Login Form -->
+<form method="POST" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+  <h1>Login</h1>
+  <br>
+
+  <div>
+    <!-- Username -->
+    <div>
+      <label
+        for="username"
+        class="control-lable"
+      >
+        Username:
+      </label>
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="login.username"
+        required
+        autofocus
+        pattern="[a-zA-Z ]*"
+        maxlength="20"
+        #username="ngModel"
+      />
+      <div *ngIf="username.errors?.required">
+        <p class="text-danger"><strong>Warning:</strong> "Username" is required.</p>
+      </div>
+      <div *ngIf="username.errors?.pattern">
+        <p class="text-danger"><strong>Warning:</strong> Needs to contain only letters.</p>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Password -->
+    <div>
+      <label
+        for="password"
+        class="control-lable"
+      >
+        Password:
+      </label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="login.password"
+        required
+        autofocus
+        pattern="[a-zA-Z ]*"
+        maxlength="20"
+        #password="ngModel"
+      />
+      <div *ngIf="password.errors?.required">
+        <p class="text-danger"><strong>Warning:</strong> "Password" is required.</p>
+      </div>
+      <div *ngIf="password.errors?.pattern">
+        <p class="text-danger"><strong>Warning:</strong> Needs to contain only letters.</p>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Submit -->
+    <input type="submit" name="login" value="Login"/>
+  </div>
+
+</form>
